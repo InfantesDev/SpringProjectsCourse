@@ -1,7 +1,8 @@
-package com.example.demo.controllers;
+package com.example.prueba1.controllers;
 
-import com.example.demo.models.servicio.IServicio;
+import com.example.prueba1.models.servicio.IServicio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
     @Autowired
+    //@Qualifier("miServicioSimple")
     IServicio servicio;
+
     @GetMapping({"/", "", "/index"})
     public String index(Model model){
         model.addAttribute("objeto", servicio.operacion());
