@@ -1,8 +1,9 @@
-package main.java.com.example.prueba1.models.servicio;
+package com.example.prueba1.models.servicio;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
-@Component("miServicioSimple")
-@Primary
+//@Component("miServicioComplejo")
+//@Primary
 public class MiServicioComplejo implements IServicio{
     @Override
     public String operacion() {

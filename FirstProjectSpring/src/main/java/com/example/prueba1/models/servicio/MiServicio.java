@@ -1,7 +1,7 @@
 package com.example.prueba1.models.servicio;
 import org.springframework.stereotype.Component;
 
-@Component("miServicioSimple")
+//@Component("miServicioSimple")
 public class MiServicio implements IServicio{
     @Override
     public String operacion() {
