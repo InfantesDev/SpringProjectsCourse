@@ -5,18 +5,35 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.annotation.RequestScope;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @Component
+@RequestScope
 public class Factura {
     
-    @Value("$(descripcion.factura)")
+    @Value("$(factura.descripcion)")
     private String descripcion;
 
     @Autowired
     private Cliente cliente;
 
     @Autowired
+    //@Qualifier("itemsFacturaOficina")
     private List<ItemFactura> items;
+
+    @PostConstruct
+    public void inicializar(){
+        cliente.setNombre(cliente.getNombre().concat(" ").concat("Jose"));
+        descripcion = descripcion.concat(" del cliente: ").concat(cliente.getNombre());
+    }
+
+    @PreDestroy
+    public void destruir(){
+        System.out.println("Factura destruida: ".concat(descripcion));
+    }
 
     public String getDescripcion() {
         return descripcion;
