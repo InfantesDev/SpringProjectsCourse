@@ -1,5 +1,6 @@
 {
     "configurations": [
+
         
     
         {
@@ -19,6 +20,16 @@
             "cwd": "${workspaceFolder}",
             "mainClass": "com.example.prueba1.Prueba1Application",
             "projectName": "prueba1",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
+            "name": "Form",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.app.form.FormApplication",
+            "projectName": "form",
             "args": "",
             "envFile": "${workspaceFolder}/.env"
         }
