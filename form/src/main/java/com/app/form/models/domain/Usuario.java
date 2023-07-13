@@ -1,24 +1,33 @@
 package com.app.form.models.domain;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 public class Usuario {
 
+    /* 
+     * Validacion datos
+     * NotEmpty, Size, Email
+    */
+
     private String identificador;
 
-    @NotEmpty
+    @NotEmpty(message = "Campo nombre esta vacio")
     private String nombre;
 
     @NotEmpty
     private String apellido;
 
     @NotEmpty
+    @Size(min = 3, max = 8)
     private String username;
 
     @NotEmpty
     private String password;
 
-    @NotEmpty
+    @NotEmpty(message = "Campo email no reconocido")
+    @Email
     private String email;
 
     public String getUsername() {

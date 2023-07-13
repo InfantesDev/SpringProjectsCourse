@@ -9,12 +9,15 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.app.form.models.domain.Usuario;
 
 import jakarta.validation.Valid;
 
 @Controller
+@SessionAttributes("usuario")
 public class FormController {
     
     @GetMapping("/form")
@@ -24,12 +27,13 @@ public class FormController {
         usuario.setApellido("Doe");
         usuario.setIdentificador("123.456.789-X");
         model.addAttribute("titulo", "Formulario usuarios");
-        model.addAttribute("user", usuario);
+        model.addAttribute("usuario", usuario);
         return "form";
     }
 
     @PostMapping("/form")
-    public String procesar(@Valid @ModelAttribute("user") Usuario usuario, BindingResult result, Model model
+    public String procesar(@Valid /*@ModelAttribute("user")*/ Usuario usuario, BindingResult result, 
+        Model model, SessionStatus status
         /*@RequestParam String username,
         @RequestParam String password,
         @RequestParam String email*/){
